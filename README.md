@@ -31,7 +31,8 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 camera configurations. The images in the bag belong to the HD configurations.
 >[!NOTE]
 >Be aware of the camera coordinate system in the rosbag and in matlab
-<img src="images/camera_rpy.png" width="500">
+><img src="images/camera_rpy.png" width="500">
+
 ## Scripts
 - Use `ICP_dense.mat` to calculate transformation matrices between the frames with sparse stereo
 - Use `ICP_sparse.mat` to calculate transformation matrices between the frames with dense stereo
