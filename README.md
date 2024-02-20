@@ -23,12 +23,15 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 >[!NOTE]
 >In Matlab: Move the Toolbox via Set Path to the top
 
-<img src="images/camera_rpy.png" width="500">
+
 
 ## Given Data
 - The rosbag `testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
 - The conf file [SN10028708.conf](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file) contains the important 
 camera configurations. The images in the bag belong to the HD configurations.
+>[!NOTE]
+>Be aware of the camera coordinate system in the rosbag and in matlab
+<img src="images/camera_rpy.png" width="500">
 ## Scripts
 - Use `ICP_dense.mat` to calculate transformation matrices between the frames with sparse stereo
 - Use `ICP_sparse.mat` to calculate transformation matrices between the frames with dense stereo
