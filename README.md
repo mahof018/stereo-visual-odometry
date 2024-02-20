@@ -1,5 +1,9 @@
 # Stereo visual odometry
 ## General Informations
+The scripts in this repository can be used to calculate and plot the trajectory based on stereo-camera images in matlab.
+The rosbag `testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory.
+The conf file [SN10028708.conf](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file) contains the important 
+camera configurations. The images in the bag belong to the HD configurations.
 ## Important Algorithms
 - [detectSURFFeatures](https://de.mathworks.com/help/vision/ref/detectsurffeatures.html)
 - [matchFeatures](https://de.mathworks.com/help/vision/ref/matchfeatures.html)
