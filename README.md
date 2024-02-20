@@ -3,8 +3,8 @@
 - The scripts in this repository can be used to calculate and plot the trajectory based on stereo-camera images in matlab.
 - The Iterative Closest Point Algorithm is used to calculate the transformation between previous and current frames
 
-![Verwendeter Algorithmus für sparse-stereo-visual Odmetry](images/ICP_clean.png| width=100)!
-<img src="images/ICP_clean.png" width="100" height="100">
+
+<img src="images/ICP_clean.png" width="500">
 ## Important Algorithms
 - [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
 - [detectSURFFeatures](https://de.mathworks.com/help/vision/ref/detectsurffeatures.html)
