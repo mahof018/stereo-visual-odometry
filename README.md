@@ -22,3 +22,4 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 ## Scripts and Functions
 - Use `ICP_dense.mat` to calculate transformation matrices between the frames with sparse stereo
 - Use `ICP_sparse.mat` to calculate transformation matrices between the frames with dense stereo
+- Use `plot_results.icp.mat` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
