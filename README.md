@@ -1,9 +1,8 @@
 # Stereo visual odometry
 ## General Informations
 - The scripts in this repository can be used to calculate and plot the trajectory based on stereo-camera images in matlab.
-- The rosbag `testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
-- The conf file [SN10028708.conf](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file) contains the important 
-camera configurations. The images in the bag belong to the HD configurations.
+- The Iterative Closest Point Algorithm is used to calculate the transformation between previous and current frames
+
 ## Important Algorithms
 - [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
 - [detectSURFFeatures](https://de.mathworks.com/help/vision/ref/detectsurffeatures.html)
@@ -22,7 +21,10 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 >[!NOTE]
 >In Matlab: Move the Toolbox via Set Path to the top
 
-
+## Given Data
+- The rosbag `testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
+- The conf file [SN10028708.conf](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file) contains the important 
+camera configurations. The images in the bag belong to the HD configurations.
 ## Scripts
 - Use `ICP_dense.mat` to calculate transformation matrices between the frames with sparse stereo
 - Use `ICP_sparse.mat` to calculate transformation matrices between the frames with dense stereo
