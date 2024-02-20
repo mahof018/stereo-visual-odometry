@@ -38,6 +38,6 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 - `plot_matches.m`: Plots the result of feature matching in the current figure.
   
 - `remove_points_near_the_border.m`: Removes points near the edge where distortion could not be handled as well as in the center.
-- `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feauture points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html)
+- `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feature points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html)
 - `load_camera_config.m`: Loads the ZED camera config file (here SN10028708.conf)
 
