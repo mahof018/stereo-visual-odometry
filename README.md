@@ -40,10 +40,12 @@ camera configurations.
 
 ### helper Functions
 ```
+
 - `calc_intrinsic_camera_matrix.m`: Calcualtes intrinsic camera matrix from camera configuration.
 - `calc_transformation_K12.m`: Calculates transformation matrix (translation in m, rotation in Rodrigues notation)
 - `createStereoParams.m`: Converts intrinsics and stereo pose to matlab stereoParams.
 - `calc_triangulation_parameters`: Calculates the parameters for triangulation based on the reprojection matrix which is returned by [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
+
 ```
 ```
 - `plot_features.m`: Plots the features as red squares of size win_size in the current figure.
