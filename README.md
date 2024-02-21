@@ -39,24 +39,20 @@ camera configurations.
 - Use `plot_results_icp.m` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
 
 ### helper Functions
-```
 
 - `calc_intrinsic_camera_matrix.m`: Calcualtes intrinsic camera matrix from camera configuration.
 - `calc_transformation_K12.m`: Calculates transformation matrix (translation in m, rotation in Rodrigues notation)
 - `createStereoParams.m`: Converts intrinsics and stereo pose to matlab stereoParams.
 - `calc_triangulation_parameters`: Calculates the parameters for triangulation based on the reprojection matrix which is returned by [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
 
-```
-```
+
 - `plot_features.m`: Plots the features as red squares of size win_size in the current figure.
 - `plot_matches.m`: Plots the result of feature matching in the current figure.
-```
 
-```
 - `remove_points_near_the_border.m`: Removes points near the edge where distortion could not be handled as well as in the center.
 - `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feature points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html)
 - `load_camera_config.m`: Loads the ZED camera config file (here SN10028708.conf)
-```
+
   ## results
   ### icp sparse
   <img src="results/sparse_icp_matlab_once_initialized_2d.png" width="500" >
@@ -66,3 +62,6 @@ camera configurations.
   <img src="results/dense_icp_matlab_once_initialized_2d.png" width="500">
   
   green: ground trtuh, red: calculated, blue: not calculated (transformation matrix previous frame)
+
+  ## Author
+This repository is maintained by [Matthis Hofmann](https://github.com/mahof018).
