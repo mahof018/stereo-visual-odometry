@@ -34,9 +34,9 @@ camera configurations.
 ><img src="images/camera_rpy.png" width="500">
 
 ## Scripts
-- Use `ICP_dense.mat` to calculate transformation matrices between the frames with sparse stereo
-- Use `ICP_sparse.mat` to calculate transformation matrices between the frames with dense stereo
-- Use `plot_results.icp.mat` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
+- Use `ICP_dense.m` to calculate transformation matrices between the frames with sparse stereo
+- Use `ICP_sparse.m` to calculate transformation matrices between the frames with dense stereo
+- Use `plot_results_icp.m` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
 
 ### helper Functions
 - `calc_intrinsic_camera_matrix.m`: Calcualtes intrinsic camera matrix from camera configuration.
