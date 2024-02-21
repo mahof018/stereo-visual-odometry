@@ -37,6 +37,7 @@ camera configurations.
 **ICP**
 - Use `ICP_dense.m` to calculate transformation matrices between the frames with sparse stereo
 - Use `ICP_sparse.m` to calculate transformation matrices between the frames with dense stereo
+  
 **Plot results**
 - Use `plot_results_icp.m` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
 
