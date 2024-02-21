@@ -1,5 +1,6 @@
 # Stereo visual odometry
 ## General Informations
+- link to repository: https://github.com/mahof018/stereo-visual-odometry.git
 - The scripts in this repository can be used to calculate and plot the trajectory based on stereo-camera images in matlab.
 - The Iterative Closest Point Algorithm is used to calculate the transformation between previous and current frames
 
