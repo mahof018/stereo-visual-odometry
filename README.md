@@ -54,8 +54,8 @@ camera configurations.
   ### icp sparse
   <img src="results/sparse_icp_matlab_once_initialized_2d.png" width="500" >
   
-  green: ground trtuh, red: calculated
+  green: ground trtuh, red: calculated, blue: not calculated (transformation matrix previous frame)
   ### icp dense
   <img src="results/dense_icp_matlab_once_initialized_2d.png" width="500">
   
-  green: ground trtuh, red: calculated
+  green: ground trtuh, red: calculated, blue: not calculated (transformation matrix previous frame)
