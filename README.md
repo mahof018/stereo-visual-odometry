@@ -52,6 +52,8 @@ camera configurations.
 
   ## results
   ### icp sparse
-     
+  <img src="results/sparse_icp_matlab_once_initialized_2d.png" width="500">
+  
   ### icp dense
+  <img src="results/dense_icp_matlab_once_initialized_2d.png" width="500">
 
