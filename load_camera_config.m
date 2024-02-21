@@ -1,7 +1,6 @@
 function cam_conf_struct = load_camera_config(filename)
 %%
 %   loads the ZED camera config file
-%   current figure.
 %
 %   input:
 %       filename:        filename if camera config file

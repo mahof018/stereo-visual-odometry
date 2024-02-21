@@ -1,10 +1,24 @@
+% This script plots the results of ICP_dense or ICP_sparse with a transformation
+% into the world coordinate system.
+%
+% You can adjust the init value abs_t_threshold to get another output
+%
+% Figure 1: Plot of calculated Poses with ground truth trajectory,
+%           initialized once in 2D
+% Figure 2: Plot of calculated Poses with ground truth trajectory,
+%           initialized once in 3D
+% Figure 3: Plot of calculated Poses with ground truth trajectory,
+%           initialized every 10 frames in 2D
 clear all;
 close all;
 clc;
-
-%
-%abs_t_threshold = 0.3; %for spar
-abs_t_threshold = 0.8; %for dense
+%% load calculated transformations
+% Transformation matrices and not-calculated transformations indices
+load('results/sparse_icp_matlab.mat')
+%load('results/dense_icp_matlab.mat') %uncomment if you want to plot the
+%results from ICP_dense
+abs_t_threshold = 0.25; %threshold for maximale translation between two frames,
+                        % otherwise the transformation matrix of the previous frame is used for the plot for dense 0.8
 %% load rosbag
 bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
 bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
@@ -17,34 +31,7 @@ transform_left_cam = readMessages(bag_imu_transform,1);
 %Raw Stereo Images
 bag_images = select(bag,"Topic","/zedm/zed_node/stereo_raw/image_raw_color");
 
-%% load calculated transformations
-% Transformation matrices and non-calculated transformations
-%load('results_icp_matlab.mat')
-%load('results_icp_matlab_no_denois.mat')
-% load('results_icp_matlab_no_downsample.mat')
-%load('results_icp_matlab_no_denois_no_downsample.mat')
-load('results_just_icp_matlab.mat')
-load('results_just_icp_matlab_2.mat')
-load('results_just_icp_matlab_3.mat')
-% load('results_just_icp_matlab_4.mat')
-% load('results_just_icp_matlab_5.mat') #best
-load('results_just_icp_matlab_6.mat')
-% load('results_dense_icp_matlab.mat')
-% load('results_dense_icp_matlab_2.mat')
-% load('results_dense_icp_matlab_3.mat')
-%load('results_dense_icp_matlab_4.mat')
-%load('results_dense_icp_matlab_5.mat')
 
-load('icp_thresh/results_icp_1.mat')
-%load('icp_thresh/results_icp_2.mat')
-%load('icp_thresh/results_icp_3.mat')
-%load('icp_thresh/results_icp_4.mat')
-%load('icp_thresh/results_icp_5.mat')
-load('icp_thresh/results_icp_no_filter.mat')
-load('icp_thresh/results_icp_high_ransac.mat')
-%load('icp_thresh/results_icp_final.mat')
-load('results/sparse_icp_matlab.mat')
-abs_t_threshold = 0.5; %for dense
 %% Get IMU Messages belonging to image timestamps
 %load timestamps
 Time_imu = bag_imu.MessageList.Time;
@@ -60,23 +47,25 @@ T_imu_left_cam = inv(T_imu_left_cam);
 
 %save imus which are closest to image times
 for i=1:length(idx_imu_closest)
+    %read bag pose
     tmp = readMessages(bag_imu,idx_imu_closest(i));
-    imu{i}=readMessages(bag_imu,idx_imu_closest(i));
+    
+    %Extract pose into homogeneous transformation matrix
     T_world_imu = transl(tmp{1}.Pose.Position.X,tmp{1}.Pose.Position.Y,tmp{1}.Pose.Position.Z);
     rotation_world_imu = UnitQuaternion([tmp{1}.Pose.Orientation.W, tmp{1}.Pose.Orientation.X, tmp{1}.Pose.Orientation.Y, tmp{1}.Pose.Orientation.Z]).R;
-    
     T_world_imu(1:3, 1:3) = rotation_world_imu;
 
-    %calcualte cam pose in respect to world frame
+    %calculate cam pose in respect to world frame
     T_world_cam{i} = T_world_imu*T_imu_left_cam;
    
+    %save x,y,z coordinates
     x_pos(i) =T_world_cam{i}(1,4);
     y_pos(i) =T_world_cam{i}(2,4);
     z_pos(i) =T_world_cam{i}(3,4);
 
 end
 
-%% Plot calculated Poses with ground truth trajectory
+%% Plot calculated Poses with ground truth trajectory in 2D
 clear not_calculated
 %Initial Pose
 T_world_left_cam = T_world_cam{1};
@@ -90,20 +79,21 @@ hold on;
 j = 1;
 not_calculated= [];
 for i = 2:length(T_complete_icp)
+    %extract current translation calculated by ICP
     T_cur = eye(4,4) ;
     T_cur(1:3,4) = T_complete_icp{i}.Translation;
     T_cur(1:3,1:3) = T_complete_icp{i}.R;  
-    if abs(T_cur(1,4)) + abs(T_cur(2,4)) + abs(T_cur(3,4)) < abs_t_threshold 
-        % T_complete_good is updated only when the condition is met
+    if abs(T_cur(1,4)) + abs(T_cur(2,4)) + abs(T_cur(3,4)) < abs_t_threshold  % T_complete_good is updated only when the condition is met
         T_complete_good = inv(T_cur);
     else
         not_calculated(j)=i;
         j=j+1;
     end
   
-
     % Calculate T_calc
     T_calc = T_world_left_cam * T_complete_good;
+
+    %save x,y,z positions
     x_calc(i) = T_calc(1,4);
     y_calc(i) = T_calc(2,4);
     z_calc(i) = T_calc(3,4);
@@ -111,19 +101,28 @@ for i = 2:length(T_complete_icp)
     T_world_left_cam = T_calc;
     
 end
-% Plot the entire point cloud
+% Plot the entire GT trajectory
 plot3(x_pos, y_pos, z_pos, 'g-');
-% Plot the entire point cloud
+% Plot the entire calculated trajectory
 plot3(x_calc,y_calc,z_calc, 'r-');
+% mark the not calculated points
 plot3(x_calc(not_calculated),y_calc(not_calculated),z_calc(not_calculated), 'b.');
 plot3(x_calc(not_calc),y_calc(not_calc),z_calc(not_calc), 'b*');
 xlabel("x in m")
 ylabel("y in m")
 
-%% Plot calculated Poses with ground truth trajetory, refresh every 10 Points
+%%  Plot calculated Poses with ground truth trajectory in 3D
+figure;
+plot3(x_calc,y_calc,z_calc, 'r-')
+hold on
+plot3(x_pos, y_pos, z_pos, 'g-');
+xlabel("x in m")
+ylabel("y in m")
+zlabel("z in m")
+legend("GT","ICP")
+%% Plot calculated Poses with ground truth trajetory, refresh every 10 Pointsin 2D
 clear not_calculated
 % Initial Pose
-%Initial Pose
 T_world_left_cam = T_world_cam{1};
 
 x_calc(1) = T_world_left_cam(1,4);
@@ -134,6 +133,7 @@ hold on;
 j = 1;
 not_calculated= [];
 for i = 2:length(T_complete_icp)
+    %extract current translation calculated by ICP
     T_cur = eye(4,4) ;
     T_cur(1:3,4) = T_complete_icp{i}.Translation;
     T_cur(1:3,1:3) = T_complete_icp{i}.R;   
@@ -152,7 +152,7 @@ for i = 2:length(T_complete_icp)
     z_calc(i) = T_calc(3,4);
 
     T_world_left_cam = T_calc;
-    %trplot(T_world_left_cam,'length', 0.1)
+    %update intitial Pose every 10 frames
     if mod(i, 10) == 0
         if i<300
 
@@ -169,13 +169,14 @@ end
 % Plot the entire true trajetory
 plot3(x_pos, y_pos, z_pos, 'g-');
 % Plot the entire calculated trajetory
-%plot3(x_calc,y_calc,z_calc, 'r.');
+% mark the not calculated points
 plot3(x_calc(not_calculated),y_calc(not_calculated),z_calc(not_calculated), 'b.');
 plot3(x_calc(not_calc),y_calc(not_calc),z_calc(not_calc), 'b*');
 %plt 
 xlabel("x in m")
 ylabel("y in m")
 
+%combine the calcualted trajectory
 for i = 0:10:length(x_calc)-10
     if i==0
         indices = 1:i+9;

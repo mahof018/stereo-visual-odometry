@@ -3,7 +3,7 @@ function T12 = calc_transformation_K12(stereo_info,cam_res)
 % 
 %   convert rodrigues rotation to roll,pitch,yaw angles
 %   
-%   !!!Matlab calcualtes in ZYX Frame, but the given Camera is XYZ
+%   !!!Matlab calculates in ZYX Frame, but the given Camera seems to be XYZ
 %   aligned!!!
 %   -roll in Z ist the RX Rotation
 %   -pitch in Y is the CV Rotation
