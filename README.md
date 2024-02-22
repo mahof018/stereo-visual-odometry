@@ -20,7 +20,7 @@
      -   [Calibration File](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file)
 
 ## Used Matlab Toolbox
-Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-toolbox/) toolboxes (RVC 2017) "Robotics Toolbox for Matlab" and "Machine Vision Toolbox for Matlab" from Peter Corke.[[1]](#1)
+Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-toolbox/) toolboxes (RVC 2017) "Robotics Toolbox for Matlab" and "Machine Vision Toolbox for Matlab" from Peter Corke[[1]](#1).
 
 >[!NOTE]
 >In Matlab: Move the Toolbox via **Set Path** to the top
@@ -80,6 +80,6 @@ camera configurations.
 This repository is maintained by [Matthis Hofmann](https://github.com/mahof018).
 
 
-## References
+## Reference
 <a id="1">[1]</a> 
 P.I. Corke, Robotics, Vision \& Control: Fundamental Algorithms in MATLAB. Second edition. Springer, 2017. ISBN 978-3-319-54413-7.
