@@ -62,8 +62,8 @@ camera configurations.
 
 ## Results
   - The results are saved in the results folder.
-         -`results/dense_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_dense.m`)
-         -`results/sparse_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_sparse.m`)
+         - `results/dense_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_dense.m`)
+         - `results/sparse_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_sparse.m`)
   - The plots from plot_results_icp.m are also saved in the resutls folder.
 ### ICP sparse
   <img src="images/sparse_icp_matlab_once_initialized_2d.png" width="500" >
