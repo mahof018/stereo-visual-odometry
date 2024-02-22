@@ -5,7 +5,7 @@
 - The Iterative Closest Point Algorithm (ICP) is used to calculate the transformation between previous and current frames.
 - You can adjust various thresholds in the scripts to look for better output based on your specific data.
 
-## Algorithm Sparse Visual Odometry
+## Algorithms used for sparse visual odometry
 <img src="images/ICP_clean.png" width="500">
 
 - [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
@@ -25,7 +25,7 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 >[!NOTE]
 >In Matlab: Move the Toolbox via **Set Path** to the top
 
-## Given Data
+## Given data
 - The rosbag `shrink_version_testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
     - The entire rosbag `testdrive_2022-10-25-09-01-50.bag` will not be published.
     - The shrinked bag contains the first 1.5 seconds of the entire rosbag.
