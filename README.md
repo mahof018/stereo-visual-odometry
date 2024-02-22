@@ -22,7 +22,7 @@
 Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-toolbox/) toolboxes (RVC 2017) "Robotics Toolbox for Matlab" and "Machine Vision Toolbox for Matlab" from Peter Corke.
 
 >[!NOTE]
->In Matlab: Move the Toolbox via Set Path to the top
+>In Matlab: Move the Toolbox via **Set Path** to the top
 
 ## Given Data
 - The rosbag `shrink_version_testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
