@@ -21,8 +21,10 @@ gridSize = 0.1; % Value used to downsample the point cloud before using ICP.
 max_iter = 200; % max iterations for ICP
 
 %% load rosbag
-bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
-bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+% bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
+% bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+bag = rosbag("shrink_version_testdrive_2022-10-25-09-01-50.bag");
+bagInfo = rosbag("info","shrink_version_testdrive_2022-10-25-09-01-50.bag");
 
 %bag data for dense stereo-visual odometry
 bag_img_disparity = select(bag,"Topic","/zedm/zed_node/disparity/disparity_image");
@@ -33,7 +35,7 @@ f = 353.0741;
 u0 = 321.8689;
 v0 = 178.9860;
 %% calculate trajectory
-not_calc = []
+not_calc = [];
 for i = 1:bag_img_disparity.NumMessages
         %Read disparity message
         dispMsg = readMessages(bag_img_disparity , i);

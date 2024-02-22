@@ -8,8 +8,10 @@ vertical_thresh  = 0.75; %used thresh  for feature location after rectification 
 dist_thresh = 4; %used thresh  for the farthest allowed distance between left camera and calculated point
 border_thresh = 30; % threshold for removing points which are near the image border
 %% load rosbag
-bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
-bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+% bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
+% bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+bag = rosbag("shrink_version_testdrive_2022-10-25-09-01-50.bag");
+bagInfo = rosbag("info","shrink_version_testdrive_2022-10-25-09-01-50.bag");
 
 %Groundtruth Pose
 bag_imu = select(bag,"Topic",['/zedm/zed_node/pose']);
@@ -53,7 +55,7 @@ right_img = img(:,1281:end,:);
 [left,right,reprojection_matrix] = rectifyStereoImages(left_img,right_img,stereo_params);
 
 %get image size after rectification
-[height_rect, width_rect,~] = size(left)
+[height_rect, width_rect,~] = size(left);
 %save parameters of reprojection matrix for XYZ-calcualtion
 [b, u0, v0, f]  = calc_triangulation_parameters(reprojection_matrix);
 %% calculate trajectory

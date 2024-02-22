@@ -14,14 +14,16 @@ close all;
 clc;
 %% load calculated transformations
 % Transformation matrices and not-calculated transformations indices
-load('results/sparse_icp_matlab.mat')
-%load('results/dense_icp_matlab.mat') %uncomment if you want to plot the
-%results from ICP_dense
+%filename_results = 'results/dense_icp_matlab';% results from ICP_dense
+filename_results = 'results/sparse_icp_matlab';% results from ICP_sparse
+load(filename_results+".mat")
 abs_t_threshold = 0.25; %threshold for maximale translation between two frames,
                         % otherwise the transformation matrix of the previous frame is used for the plot for dense 0.8
 %% load rosbag
-bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
-bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+% bag = rosbag("testdrive_2022-10-25-09-01-50.bag");
+% bagInfo = rosbag("info","testdrive_2022-10-25-09-01-50.bag");
+bag = rosbag("shrink_version_testdrive_2022-10-25-09-01-50.bag");
+bagInfo = rosbag("info","shrink_version_testdrive_2022-10-25-09-01-50.bag");
 
 %Groundtruth Pose
 bag_imu = select(bag,"Topic",['/zedm/zed_node/pose']);
@@ -74,7 +76,7 @@ x_calc(1) = T_world_left_cam(1,4);
 y_calc(1) = T_world_left_cam(2,4);
 z_calc(1) = T_world_left_cam(3,4);
 
-figure;
+f = figure;
 hold on;
 j = 1;
 not_calculated= [];
@@ -111,15 +113,20 @@ plot3(x_calc(not_calc),y_calc(not_calc),z_calc(not_calc), 'b*');
 xlabel("x in m")
 ylabel("y in m")
 
+%save plot
+exportgraphics(f,filename_results+"_once_initialized_2d.png",'Resolution',300)
 %%  Plot calculated Poses with ground truth trajectory in 3D
-figure;
+f = figure;
 plot3(x_calc,y_calc,z_calc, 'r-')
 hold on
 plot3(x_pos, y_pos, z_pos, 'g-');
 xlabel("x in m")
 ylabel("y in m")
 zlabel("z in m")
-legend("GT","ICP")
+legend("ICP","GT")
+
+%save plot
+exportgraphics(f,filename_results+"_once_initialized_3d.png",'Resolution',300)
 %% Plot calculated Poses with ground truth trajetory, refresh every 10 Pointsin 2D
 clear not_calculated
 % Initial Pose
@@ -186,3 +193,5 @@ for i = 0:10:length(x_calc)-10
     plot3(x_calc(indices), y_calc(indices), z_calc(indices), 'r-', 'LineWidth', 1);
 end
 
+%save plot
+exportgraphics(f,filename_results+"_multiple_initializations_2d.png",'Resolution',300)
