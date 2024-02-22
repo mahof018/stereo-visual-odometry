@@ -69,12 +69,12 @@ camera configurations.
   <img src="images/sparse_icp_matlab_once_initialized_2d.png" width="500" >
   
   Top view of the trajectory of the entire bag
-  - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
+  - green: ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
 ### ICP dense
   <img src="images/dense_icp_matlab_once_initialized_2d.png" width="500">
   
    Top view of the trajectory of the entire bag
-  - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
+  - green: ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
 
 ## Author
 This repository is maintained by [Matthis Hofmann](https://github.com/mahof018).
