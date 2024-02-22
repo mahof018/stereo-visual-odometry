@@ -27,7 +27,7 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 ## Given Data
 - The rosbag `shrink_version_testdrive_2022-10-25-09-01-50.bag` can be used to extract stereo images and the ground truth trajectory as well as the values for dense stereo-visual-odometry.
     - The entire rosbag `testdrive_2022-10-25-09-01-50.bag` will not be published.
-    - The shrinked bag contains the first 5 seconds of the entire rosbag.
+    - The shrinked bag contains the first 1.5 seconds of the entire rosbag.
 - The conf file [SN10028708.conf](https://support.stereolabs.com/hc/en-us/articles/360007497173-What-is-the-calibration-file) contains the important 
 camera configurations.
      - The images in the bag belong to the HD configurations.
