@@ -2,7 +2,8 @@
 ## General Informations
 - link to repository: https://github.com/mahof018/stereo-visual-odometry.git
 - The scripts in this repository can be used to calculate and plot the trajectory based on stereo-camera images in matlab.
-- The Iterative Closest Point Algorithm is used to calculate the transformation between previous and current frames.
+- The Iterative Closest Point Algorithm (ICP) is used to calculate the transformation between previous and current frames.
+- You can adjust various thresholds in the scripts to look for better output based on your specific data.
 
 ## Algorithm Sparse Visual Odometry
 <img src="images/ICP_clean.png" width="500">
