@@ -56,7 +56,7 @@ camera configurations.
 - `remove_points_near_the_border.m`: Removes points near the edge where distortion could not be handled as well as in the center.
 - `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feature points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html).
   
-**plot features** (not used in the Scripts, but helpfull):
+**plot features** (Not used in the scripts, but helpful for plotting intermediate results.):
 - `plot_features.m`: Plots the features as red squares of size win_size in the current figure.
 - `plot_matches.m`: Plots the result of feature matching in the current figure.
 
