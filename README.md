@@ -60,12 +60,12 @@ camera configurations.
 - `plot_matches.m`: Plots the result of feature matching in the current figure.
   ## results
   ### icp sparse
-  <img src="results/sparse_icp_matlab_once_initialized_2d.png" width="500" >
+  <img src="images/sparse_icp_matlab_once_initialized_2d.png" width="500" >
   
   Top view of entire bag
   - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
   ### icp dense
-  <img src="results/dense_icp_matlab_once_initialized_2d.png" width="500">
+  <img src="images/dense_icp_matlab_once_initialized_2d.png" width="500">
   
   Top view of entire bag
   - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
