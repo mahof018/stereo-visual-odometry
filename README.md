@@ -33,28 +33,28 @@ Download and install the matlab [RVC](https://petercorke.com/toolboxes/robotics-
 camera configurations.
      - The images in the bag belong to the HD configurations.
 >[!NOTE]
->Be aware of the camera coordinate system in the rosbag and in matlab
+>Be aware of the camera coordinate system in the rosbag and in matlab.
 ><img src="images/camera_rpy.png" width="500">
 
 ## Scripts
 **ICP**
-- Use `ICP_dense.m` to calculate transformation matrices between the frames with sparse stereo
-- Use `ICP_sparse.m` to calculate transformation matrices between the frames with dense stereo
+- Use `ICP_dense.m` to calculate transformation matrices between the frames with sparse stereo.
+- Use `ICP_sparse.m` to calculate transformation matrices between the frames with dense stereo.
   
 **Plot results**
 - Use `plot_results_icp.m` to plot the computed trajectory from `ICP_dense.mat` or `ICP_sparse.mat` together with the ground truth trajectory.
 
 ### helper Functions
 **load and convert camera parameters:**
-- `load_camera_config.m`: Loads the ZED camera config file (here SN10028708.conf)
+- `load_camera_config.m`: Loads the ZED camera config file (here SN10028708.conf).
 - `calc_intrinsic_camera_matrix.m`: Calcualtes intrinsic camera matrix from camera configuration.
-- `calc_transformation_K12.m`: Calculates transformation matrix (translation in m, rotation in Rodrigues notation)
+- `calc_transformation_K12.m`: Calculates transformation matrix (translation in m, rotation in Rodrigues notation).
 - `createStereoParams.m`: Converts intrinsics and stereo pose to matlab stereoParams.
-- `calc_triangulation_parameters`: Calculates the parameters for triangulation based on the reprojection matrix which is returned by [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html)
+- `calc_triangulation_parameters`: Calculates the parameters for triangulation based on the reprojection matrix which is returned by [rectifyStereoImages](https://de.mathworks.com/help/vision/ref/rectifystereoimages.html).
   
 **filter features:**
 - `remove_points_near_the_border.m`: Removes points near the edge where distortion could not be handled as well as in the center.
-- `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feature points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html)
+- `remove_unvalid_features.m`: Removes not inlier indices of unlimited number of [feature points](https://de.mathworks.com/help/vision/feature-detection-and-extraction.html).
   
 **plot features** (not used in the Scripts, but helpfull):
 - `plot_features.m`: Plots the features as red squares of size win_size in the current figure.
@@ -67,12 +67,12 @@ camera configurations.
   ### icp sparse
   <img src="images/sparse_icp_matlab_once_initialized_2d.png" width="500" >
   
-  Top view of entire bag
+  Top view of the trajectory of the entire bag
   - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
   ### icp dense
   <img src="images/dense_icp_matlab_once_initialized_2d.png" width="500">
   
-  Top view of entire bag
+   Top view of the trajectory of the entire bag
   - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
 
   ## Author
