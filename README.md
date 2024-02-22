@@ -65,12 +65,12 @@ camera configurations.
          -`results/dense_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_dense.m`)
          -`results/sparse_icp_matlab.mat` icp transformation matrices between frames and indices of not calculated transformations (`ICP_sparse.m`)
   - The plots from plot_results_icp.m are also saved in the resutls folder.
-### icp sparse
+### ICP sparse
   <img src="images/sparse_icp_matlab_once_initialized_2d.png" width="500" >
   
   Top view of the trajectory of the entire bag
   - green: Ground truth, red: calculated, blue: not calculated (transformation matrix previous frame)
-### icp dense
+### ICP dense
   <img src="images/dense_icp_matlab_once_initialized_2d.png" width="500">
   
    Top view of the trajectory of the entire bag
